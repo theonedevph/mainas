@@ -1,0 +1,1634 @@
+/* 🎨 PALETA MARSALA + DOURADO */
+:root {
+  --marsala-principal: #964f4c;
+  --marsala-escuro: #7c3f3c;
+  --dourado: #d4af37;
+  --dourado-claro: #e8c96b;
+  --cinza-escuro: #1f1f1f;
+  --bege: #83632d;
+  --branco: #ffffff;
+  --vinho: #5a1e1c;
+
+  /* Tipografia */
+  --fonte-titulo: "Montserrat", "Poppins", sans-serif;
+  --fonte-texto: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RESET & GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--cinza-escuro);
+  background-color: var(--bege);
+}
+
+/* SEÇÕES */
+section {
+  display: none;
+  min-height: 100vh;
+  padding: 60px 0;
+  margin: 0;
+}
+
+section.active {
+  display: block;
+}
+
+.scroll-anchor {
+  display: block;
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+}
+
+/* ==========================================
+   NAVBAR - ELEGANTE E SOFISTICADA
+========================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(135deg, var(--vinho) 0%, var(--vinho) 100%);
+  padding: 12px 2rem !important;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid var(--dourado);
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
+
+/* tamanho do logo (somente esta classe controla) */
+.logo {
+  position: inherit;
+  margin-top: -0px;
+  height: 80px;
+  width: auto;
+}
+
+/* Ajuste fino da logo em dispositivos móveis: recolher entre 3 e 7px */
+@media (max-width: 768px) {
+  .logo {
+    margin-top: -5px; /* ajuste sugerido: -5px */
+  }
+}
+
+.nav-link {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--branco) !important;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--dourado);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--dourado) !important;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.current-section {
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+  color: var(--branco);
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.55rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.current-section span {
+  display: inline-block;
+}
+
+@media (max-width: 991px) {
+  .current-section {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+}
+
+/* ==========================================
+   HOME - CARROSSEL COM OVERLAY
+========================================== */
+#home {
+  padding: 0;
+  margin-top: 60px;
+  /* Fundo configurável por seção */
+  background: var(--bg-home);
+  color: var(--marsala-principal);
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-item {
+  position: relative;
+  height: 87vh;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay escuro para melhor legibilidade */
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-caption {
+  bottom: 20% !important;
+  z-index: 2 !important;
+  text-align: center;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.carousel-caption h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--branco);
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+  color: var(--dourado-claro);
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* ==========================================
+   BOTÃO PRINCIPAL - ELEGANTE
+========================================== */
+.main-btn {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--dourado) 0%,
+    var(--dourado-claro) 100%
+  );
+  color: var(--cinza-escuro) !important;
+  padding: 14px 40px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.main-btn:hover {
+  background: transparent;
+  color: var(--dourado) !important;
+  border-color: var(--dourado);
+  border-width: 3px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+   SEÇÃO CONTRATOS
+========================================== */
+#contratos {
+  background: var(--bg-contratos);
+  padding: 80px 0;
+}
+
+#contratos h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 3rem;
+  color: var(--marsala-principal);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+#contratos .text-center p {
+  color: var(--cinza-escuro);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-card {
+  width: 80%;
+  max-width: 100%;
+  min-height: 304px;
+  margin: 0 auto;
+}
+
+/* Overflow do card controlado por breakpoint: desktop permite overlay, mobile empilha */
+
+/* Tornar o conteúdo extra um painel absoluto dentro do card
+   para evitar que a expansão empurre cards vizinhos. */
+.service-card .card-body {
+  position: relative;
+  overflow: visible; /* permitir que o painel absoluto apareça */
+}
+
+.service-card .toggle-content {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: calc(100% + 12px);
+  background: var(--branco);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: 18px;
+  z-index: 30;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Quando o card estiver aberto, mostrar o painel sem alterar layout dos irmãos */
+.service-card:not(.collapsed) .toggle-content {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 600px; /* suficiente para conteúdo médio; JS remove max-height depois */
+}
+
+/* Em telas menores (celular/tablet), mantenha comportamento empilhado para evitar sobreposição */
+@media (max-width: 991px) {
+  .service-card .toggle-content {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    max-height: none;
+    padding: 0;
+  }
+
+  .service-card {
+    width: 100%;
+  }
+}
+
+/* Em desktop / notebook (>=992px) use overlay absoluto dentro do card */
+@media (min-width: 992px) {
+  .card.service-card {
+    overflow: visible;
+  }
+
+  .service-card .card-body {
+    position: relative;
+    overflow: visible;
+  }
+
+  .service-card .toggle-content {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: calc(100% + 12px);
+    background: var(--branco);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    padding: 18px;
+    z-index: 30;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .service-card:not(.collapsed) .toggle-content {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 600px;
+  }
+}
+
+/* (conteúdo mantido; layout/containers não alterados) */
+
+/* ==========================================
+   SEÇÃO QUEM
+========================================== */
+#quem {
+  background: var(--bg-quem);
+  padding: 80px 0;
+  color: var(--marsala-principal);
+}
+
+#quem .card {
+  margin-top: -50px;
+}
+
+#agende {
+  background: var(--bg-agende);
+  padding: 80px 0;
+  color: var(--marsala-principal);
+}
+
+/* ==============================
+   VARIÁVEIS: FUNDOS POR SEÇÃO
+   (troque aqui sem mexer em containers)
+============================== */
+:root {
+  --bg-home: linear-gradient(180deg, #f7ece8 0%, #f0d9cf 100%);
+  --bg-quem: linear-gradient(180deg, var(--branco) 0%, var(--bege) 100%);
+  --bg-contratos: linear-gradient(180deg, var(--bege) 0%, #f0ede5 100%);
+  --bg-agende: linear-gradient(135deg, #faf8f5 0%, var(--bege) 100%);
+}
+
+/* CORREÇÃO: sintaxe CSS inválida removida */
+
+.btn-toggle {
+  display: inline-flex;
+  width: auto;
+  align-self: flex-start;
+  background: linear-gradient(
+    135deg,
+    var(--dourado) 0%,
+    var(--dourado-claro) 100%
+  );
+  color: var(--cinza-escuro) !important;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 18px rgba(212, 175, 55, 0.25);
+}
+
+.btn-toggle:hover {
+  background: transparent;
+  color: var(--dourado) !important;
+  border-color: var(--dourado);
+  transform: translateY(-1px);
+}
+
+.service-card .card-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.btn-toggle {
+  width: fit-content;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background: var(--branco);
+  border-top: 1px solid var(--dourado);
+  height: 100%;
+}
+
+.theme-home .card {
+  background: var(--marsala-principal);
+  color: var(--branco);
+  border-top: 1px solid var(--dourado);
+}
+
+.theme-home .card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.theme-home .card:hover img {
+  transform: scale(1.05);
+}
+
+#home .card.dark {
+  max-width: 320px;
+  overflow: hidden;
+}
+
+#home .card.dark section {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
+}
+
+#home .card.dark:hover section {
+  max-height: 360px;
+  opacity: 1;
+}
+
+#home .card h2,
+#home .card h3,
+#home .card p,
+#home .card .card-title,
+#home .card .card-text,
+#home .card .tag {
+  color: var(--branco);
+}
+
+#home .card .tag {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-family: var(--fonte-titulo);
+  color: var(--marsala-principal);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  color: #555;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.card .btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--dourado) 0%,
+    var(--dourado-claro) 100%
+  );
+  border: none;
+  color: var(--cinza-escuro) !important;
+  font-weight: 600;
+  padding: 10px 25px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.card .btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    var(--marsala-principal) 0%,
+    var(--marsala-escuro) 100%
+  );
+  color: var(--dourado) !important;
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   SEÇÃO "QUEM SOU EU" - MELHORATA
+========================================== */
+#quem {
+  background: linear-gradient(180deg, var(--branco) 0%, var(--bege) 100%);
+  padding: 80px 0;
+  color: #965c4f;
+}
+
+/* Sobe o card “Quem sou eu” */
+#quem .card {
+  margin-top: -50px;
+}
+
+#contratos {
+  background: rgba(150, 92, 79, 0.12);
+  border-radius: 24px;
+  padding: 50px 30px;
+  margin-top: 30px;
+}
+
+/* ============================== 
+   SOBRE MIM - NOVO LAYOUT (container + card)
+   Ajuste fino pelos valores das variáveis abaixo.
+   ============================== */
+
+/* Fundo do container configurável */
+.sobre-grid {
+  /* >>> ALTERE A COR DO FUNDO AQUI <<< */
+  --sobre-container-bg: rgba(150, 92, 79, 0.12);
+
+  /* >>> ALTERE O “QUANTO Sobe” (altura/topo) AQUI <<< */
+  --sobre-top-offset: -40px;
+
+  /* >>> ALTERE O deslocamento X (esquerda/direita) AQUI <<< */
+  --sobre-x-offset: 0px;
+
+  width: 100%;
+  background: var(--sobre-container-bg);
+  border-radius: 24px;
+  padding: 34px 34px;
+
+  position: relative;
+  top: var(--sobre-top-offset);
+  transform: translateX(var(--sobre-x-offset));
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* ============================== 
+   SEGUNDO CONTAINER (card + perguntas)
+   ============================== */
+
+/* ============================== 
+   SEGUNDO CONTAINER (card + perguntas)
+   ============================== */
+
+.sobre-grid2 {
+  --sobre2-bg: rgba(236, 214, 206, 0.72);
+  --sobre2-border: rgba(193, 141, 131, 0.3);
+  --sobre2-offset-x: 0px; /* altere aqui para enviar mais à esquerda */
+  --sobre2-card-bg: rgba(255, 255, 255, 0.95);
+  --sobre2-card-border: rgba(193, 141, 131, 0.22);
+
+  margin-top: 24px;
+  width: 100%;
+  background: var(--sobre2-bg);
+  border: 1px solid var(--sobre2-border);
+  border-radius: 34px;
+  padding: 42px 36px;
+  position: relative;
+  transform: translateX(var(--sobre2-offset-x));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Para mover o bloco ainda mais para a esquerda, aumente o valor negativo:
+   --sobre2-offset-x: -30px;    ou    --sobre2-offset-x: -40px; */
+
+.sobre-col.esquerda2 {
+  flex: 0 0 220px;
+  min-width: 220px;
+}
+
+.sobre-col.direita2 {
+  flex: 1 1 5600px;
+  min-width: 280px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sobre-grid2 .porque {
+  color: #7c3f3c;
+  font-family: var(--fonte-titulo);
+  font-weight: 100;
+  font-size: 0.1rem;
+  line-height: 0.05;
+  margin: 0 auto 1.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+.cards-senka {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  transform: translateX(-10px);
+}
+
+.card-r {
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid #8b4b50;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(113, 71, 66, 0.08);
+}
+
+.card-hea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  color: #7c3f3c;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card-hea:hover,
+.card-r.active .card-hea {
+  background: rgba(139, 75, 80, 0.08);
+  transform: translateX(2px);
+}
+
+.card-hea:focus {
+  outline: none;
+}
+
+.card-rest {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.card-fb {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(193, 141, 131, 0.22);
+  border-radius: 50%;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card-fb::before,
+.card-fb::after {
+  content: "";
+  position: absolute;
+  background-color: #7c3f3c;
+  transition: all 0.3s ease;
+}
+
+.card-fb::before {
+  width: 16px;
+  height: 2px;
+}
+
+.card-fb::after {
+  width: 2px;
+  height: 16px;
+}
+
+.card-r.active .card-fb {
+  transform: rotate(45deg);
+}
+
+.card-r.active .card-fb::after {
+  opacity: 0;
+}
+
+.card-s {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease;
+}
+
+.card-r.active .card-s {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.card-c {
+  padding: 0 24px 24px;
+  color: #4c2321;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.card-s p {
+  margin: 0;
+}
+
+.sobre-grid2 .rest {
+  /* >>> ALTERE A COR DO “rest” AQUI <<< */
+  color: var(--sobre2-rest-color, #2b1f1a);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .sobre-grid2 {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .sobre-col.esquerda2,
+  .sobre-col.direita2 {
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.sobre-col {
+  display: flex;
+}
+
+.sobre-col.esquerda {
+  flex: 1 1 60%;
+  flex-direction: column;
+}
+
+.sobre-col.direita {
+  flex: 0 0 40%;
+  justify-content: flex-end;
+}
+
+.sobre-topo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Se não existir ainda cor/estilo p/ .nice e .nome, mantenha o visual controlado aqui */
+.sobre-grid .nice {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--marsala-principal);
+}
+
+.sobre-grid .nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: var(--marsala-principal);
+}
+
+/* Controle de altura/posicionamento do bloco de texto (ajuste fino) */
+.sobre-grid .sobre-texto {
+  margin-top: 18px;
+}
+
+@media (max-width: 768px) {
+  .sobre-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .sobre-col.direita {
+    width: 100%;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+}
+
+#quem h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 3rem;
+  color: var(--marsala-principal);
+  margin-bottom: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#quem img {
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+#quem img:hover {
+  transform: scale(1.03);
+}
+
+#quem h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px;
+  color: var(--marsala-principal);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+#quem .lead {
+  color: #2b1f1a; /* texto claro e agradável */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px; /* aumentei mais */
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  text-transform: none; /* remove o "UPPERCASE" que deixa estranho */
+  letter-spacing: 0.2px;
+}
+
+.sobre-texto {
+  font-family: var(--fonte-texto);
+  color: #2b1f1a;
+  font-size: 1.45rem;
+  line-height: 2.05;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  margin-bottom: 0;
+}
+
+.sobre-texto-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 28px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  margin: 0;
+  top: 1.2rem;
+  left: 2rem;
+  width: 70px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--dourado) 0%,
+    var(--dourado-claro) 100%
+  );
+}
+
+.sobre-texto-card p {
+  margin-bottom: 1.5rem;
+}
+
+.sobre-texto-card p:last-child {
+  margin-bottom: 0;
+}
+
+.sobre-texto br {
+  content: "";
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+#quem p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+#home h5 {
+  font-family: var(--fonte-titulo);
+  color: var(--marsala-principal);
+  font-weight: 700;
+
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  border-left: 4px solid var(--dourado);
+  padding-left: 15px;
+}
+
+#quem ul {
+  margin-bottom: 20px;
+}
+
+#quem li {
+  color: #555;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  line-height: 1.6;
+}
+
+#quem li::before {
+  content: "✓ ";
+  color: var(--dourado);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* ==========================================
+   SEÇÃO AGENDAMENTO
+========================================== */
+#agende {
+  background: linear-gradient(135deg, #faf8f5 0%, var(--bege) 100%);
+  padding: 80px 0;
+}
+
+#agende h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 3rem;
+  color: var(--marsala-principal);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+#agende .text-center p {
+  color: var(--cinza-escuro);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+.form-label {
+  font-family: var(--fonte-titulo);
+  color: var(--marsala-principal);
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.form-control,
+.form-select {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--branco);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--dourado);
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+  background-color: var(--branco);
+}
+
+form {
+  background: var(--branco);
+  border-top: 5px solid var(--dourado);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+form .btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--marsala-principal) 0%,
+    var(--marsala-escuro) 100%
+  );
+  border: none;
+  color: var(--branco);
+  font-weight: 700;
+  padding: 14px 50px;
+  border-radius: 50px;
+  transition: all 0.4s ease;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(150, 79, 76, 0.3);
+}
+
+form .btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    var(--dourado) 0%,
+    var(--dourado-claro) 100%
+  );
+  color: var(--cinza-escuro);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   FOOTER - PROFISSIONAL
+========================================== */
+.footer {
+  background: linear-gradient(
+    135deg,
+    var(--marsala-principal) 0%,
+    var(--marsala-escuro) 100%
+  ) !important;
+  color: var(--branco) !important;
+  padding: 20px 0 10px;
+  width: 100%;
+  margin-top: 0;
+}
+
+.footer .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-heading {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dourado) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--dourado);
+}
+
+.footer-column {
+  position: relative;
+}
+
+.footer-column .footer-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+}
+
+.footer-column:hover .footer-content {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-column:hover .footer-heading {
+  color: #ffffff !important;
+}
+
+.footer-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-link a {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.footer-link a:hover {
+  color: var(--dourado) !important;
+  margin-left: 5px;
+}
+
+.footer address {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.8;
+}
+
+.footer .list-inline-item a {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.footer .list-inline-item a:hover {
+  background: var(--dourado);
+  color: var(--cinza-escuro) !important;
+  transform: translateY(-5px);
+}
+
+.footer .bg-dark {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  padding: 10px 0 !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.footer .bg-dark p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.endereço {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-direction: row;
+}
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 1rem !important;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .carousel-caption h1 {
+    font-size: 2.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1.2rem;
+  }
+
+  #contratos h1,
+  #quem h1,
+  #agende h1 {
+    font-size: 2rem;
+  }
+
+  #quem h3 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-caption h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .main-btn {
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+}
+
+/* ==========================================
+   ESPAÇAMENTOS E VISUAL
+========================================== */
+#contratos .container,
+#quem .container,
+#agende .container {
+  padding: 0 20px;
+}
+
+.row {
+  margin-bottom: 40px;
+}
+
+.col-md-4,
+.col-md-6 {
+  margin-bottom: 30px;
+}
+
+section {
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden; /* permite rolar verticalmente */
+  background: linear-gradient(#eee, #ddd);
+}
+
+.card {
+  --bg: #fff;
+  --title-color: #fff;
+  --title-color-hover: #000;
+  --text-color: #666;
+  --button-color: #eee;
+  --button-color-hover: #ddd;
+  background: var(--bg);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 20rem;
+  height: 30rem;
+  /*   aspect-ratio: 2 / 3;
+  height: auto; */
+  overflow: clip;
+  position: relative;
+  font-family: Lato, Montserrat, Helvetica, Arial, sans-serif;
+
+  &.dark {
+    --bg: #964f4c;
+    --title-color: #fff;
+    --title-color-hover: #fff;
+    --text-color: #ccc;
+    --button-color: #555;
+    --button-color-hover: #444;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% - 1rem);
+    height: 30%;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    mask: linear-gradient(#0000, #000f 80%);
+    backdrop-filter: blur(0);
+    border-radius: 0 0 1.5rem 1.5rem;
+    translate: 0 0;
+    transition: translate 0.25s;
+  }
+
+  > img {
+    max-width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    object-position: 50% 5%;
+    border-radius: 1.5rem;
+    display: block;
+    transition:
+      aspect-ratio 0.25s,
+      object-position 0.5s;
+    /* firefox patch */
+    width: 100%;
+    height: auto;
+  }
+
+  > section {
+    margin: 1rem;
+    height: calc(33.3333% - 1rem);
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin: 0;
+      margin-block-end: 1rem;
+      font-size: 1.5rem;
+      opacity: 0;
+      translate: 0 -200%;
+      opacity: 1;
+      color: var(--title-color);
+      transition:
+        color 0.5s,
+        margin-block-end 0.25s,
+        opacity 1s,
+        translate 0.25s;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.3;
+      color: var(--text-color);
+      opacity: 0;
+      margin: 0;
+      translate: 0 100%;
+      transition:
+        margin-block-end 0.25s,
+        opacity 1s 0.2s,
+        translate 0.25s 0.2s;
+    }
+
+    > div {
+      flex: 1;
+      align-items: flex-end;
+      display: flex;
+      justify-content: space-between;
+      translate: 0 100%;
+      opacity: 0;
+      transition:
+        translate 0.25s 0.2s,
+        opacity 1s;
+
+      .tag {
+        align-self: center;
+        color: var(--title-color-hover);
+      }
+
+      button {
+        border: 1px solid #0000;
+        border-radius: 1.25rem 1.25rem 1.5rem 1.25rem;
+        font-size: 1rem;
+        padding: 1rem 1.5rem 1rem 2.75rem;
+        translate: 1rem;
+        background: var(--button-color);
+        transition: background 0.33s;
+        outline-offset: 2px;
+        position: relative;
+        color: var(--title-color-hover);
+        /* specific to demo */
+        width: 8.2rem;
+        text-align: right;
+
+        &::before,
+        &::after {
+          content: "";
+          width: 0.85rem;
+          height: 0.1rem;
+          background: currentcolor;
+          position: absolute;
+          top: 50%;
+          left: 1.33rem;
+          border-radius: 1rem;
+        }
+
+        &::after {
+          rotate: 90deg;
+          transition: rotate 0.15s;
+        }
+
+        &.following {
+          &::after {
+            rotate: 0deg;
+          }
+        }
+
+        &:hover {
+          background: var(--button-color-hover);
+        }
+
+        &:focus {
+          outline: 2px solid var(--text-color);
+        }
+      }
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    &::before {
+      translate: 0 100%;
+    }
+
+    > img {
+      aspect-ratio: 1 / 1;
+      object-position: 50% 10%;
+      transition:
+        aspect-ratio 0.25s,
+        object-position 0.25s;
+    }
+
+    > section {
+      h2,
+      p {
+        translate: 0 0;
+        margin-block-end: 0.5rem;
+        opacity: 1;
+      }
+
+      h2 {
+        /* mantém a mesma cor do h2 (sem trocar no hover) */
+        color: var(--title-color) !important;
+      }
+
+      /* Sobe maminas (h2) e o h3 dentro do card */
+      h2,
+      h3 {
+        translate: 0 -60px;
+      }
+
+      /* garante que o h3 (Advogada | OAB) fique dourado (combina com marsala) no hover */
+      h3 {
+        color: var(--dourado-claro) !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+      }
+
+      > div {
+        translate: 0 0;
+        opacity: 1;
+        transition:
+          translate 0.25s 0.25s,
+          opacity 0.5s 0.25s;
+      }
+    }
+  }
+}
+
+.card {
+  background: #964f4c;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  max-width: 500px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* O card usa a transição do conteúdo interno para abrir de forma mais suave. */
+.card-list {
+  transition: all 0.4s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-out;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.btn-expand {
+  background: #6366f1;
+  color: white;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
+
+.btn-collapse {
+  background: #64748b;
+  color: white;
+  grid-template-rows: 0fr;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Overrides finais para garantir que o layout das cards funcione */
+.theme-home .card {
+  background: var(--marsala-principal) !important;
+  color: var(--branco) !important;
+  border: 1px solid rgba(239, 171, 0, 0.8) !important;
+}
+
+#home .card img {
+  width: 100% !important;
+  display: block !important;
+  transform: scale(1.2) !important;
+  transform-origin: center center !important;
+  transition: transform 0.35s ease !important;
+}
+
+#home .card:hover img {
+  transform: scale(1.25) !important;
+}
+
+#home .card.dark section {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease !important;
+}
+
+#home .card.dark:hover section {
+  max-height: 360px !important;
+  opacity: 1 !important;
+}
+
+.service-card {
+  width: 80% !important;
+  max-width: 100% !important;
+  min-height: 304px !important;
+  margin: 0 auto !important;
+}
+
+.service-card .card-body {
+  height: 100% !important;
+}
+
+.service-card .toggle-content {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(-10px);
+  transition:
+    max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.35s ease !important,
+    transform 0.35s ease !important;
+  will-change: max-height, opacity, transform;
+}
+
+.service-card:not(.collapsed) .toggle-content {
+  max-height: 500px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.btn-toggle {
+  border: 1px solid transparent !important;
+}
+
+/* WhatsApp floating button (fixed bottom-left) */
+.whatsapp-fab {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  z-index: 99999;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.whatsapp-fab:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  opacity: 0.98;
+}
+
+.whatsapp-fab i {
+  font-size: 20px;
+}
